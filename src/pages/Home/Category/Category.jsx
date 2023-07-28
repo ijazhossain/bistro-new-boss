@@ -20,7 +20,7 @@ const Category = () => {
                     clickable: true,
                 }}
                 modules={[Pagination]}
-                className="mySwiper"
+                className="mySwiper mb-24"
             >
                 <SwiperSlide>
                     <div className='relative'>
