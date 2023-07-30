@@ -13,7 +13,7 @@ const Featured = () => {
                 </div>
                 <div className="md:flex items-center justify-center  md:gap-x-8">
                     <div className='md:w-1/2'>
-                        <img className='w-full ' src={featureImg} alt="" />
+                        <img className='w-full' src={featureImg} alt="" />
                     </div>
                     <div className='md:w-1/2 text-white'>
                         <p className='text-[24px]'>March 20, 2023</p>
