@@ -1,6 +1,6 @@
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
-import MenuItems from "../../Shared/MenuItems/MenuItems";
 import { useMenu } from "../../../hooks/useMenu";
+import MenuCategory from "../../Menu/MenuCategory/MenuCategory";
 
 const PopularMenu = () => {
     const [menu, loading] = useMenu([])
@@ -9,6 +9,7 @@ const PopularMenu = () => {
         return <span className="loading loading-spinner loading-lg"></span>
     }
     /* useEffect(() => {
+    
         fetch('menu.json')
             .then(res => res.json())
             .then(data => {
@@ -20,14 +21,7 @@ const PopularMenu = () => {
     return (
         <>
             <SectionTitle heading="FROM OUR MENU" subHeading="---Check it out---"></SectionTitle>
-            <div className="grid lg:grid-cols-2 gap-6 w-[90%] mx-auto mb-24">
-                {
-                    popularMenu.map(item => <MenuItems
-                        key={item._id}
-                        item={item}
-                    ></MenuItems>)
-                }
-            </div>
+            <MenuCategory item={popularMenu}></MenuCategory>
         </>
     );
 };
