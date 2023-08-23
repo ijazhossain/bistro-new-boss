@@ -1,38 +1,18 @@
 import bgImg from '../../assets/reservation/wood-grain-pattern-gray1x.png'
 import img from '../../assets/others/authentication2.png'
-import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
-import { useEffect, useState } from 'react';
-import { FaFacebookF, FaGithub, FaGoogle } from "react-icons/fa";
+import { FaFacebookF, FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-
-const LogIn = () => {
-    const [disabled, setDisabled] = useState(true)
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        const form = e.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        console.log(email, password);
-    }
-    const handleValidate = (e) => {
-        const user_captcha_value = e.target.value;
-        console.log(user_captcha_value);
-        if (validateCaptcha(validateCaptcha) === true) {
-            setDisabled(true)
-        } else {
-            setDisabled(false)
-        }
-    }
-    useEffect(() => {
-        loadCaptchaEnginge(6);
-    }, [])
+const Register = () => {
     return (
         <div style={{ backgroundImage: `url("${bgImg}")` }} className='bg-center bg-cover h-auto  py-24'>
-            <div style={{ boxShadow: '10px 10px 10px 10px rgba(0, 0, 0, 0.25)' }} className='lg:flex items-center justify-center gap-24 w-[90%] mx-auto h-auto p-24 '>
+            <div style={{ boxShadow: '10px 10px 10px 10px rgba(0, 0, 0, 0.25)' }} className='lg:flex flex-row-reverse items-center justify-center gap-24 w-[90%] mx-auto h-auto p-24 '>
                 <img className='flex-1' src={img} alt="" />
                 <div className='flex-1'>
-                    <form onSubmit={handleSubmit} className='flex flex-col gap-5 w-full'>
-                        <h2 className='text-[48px] text-center font-bold'>Login</h2>
+                    <form className='flex flex-col gap-5 w-full'>
+                        <h2 className='text-[48px] text-center font-bold'>Sign Up</h2>
+
+                        <label className='text-[20px] text-[#444]' htmlFor="email" >Name</label>
+                        <input className='px-6 py-5 rounded-lg' type="text" placeholder='Type here' name="name" />
 
                         <label className='text-[20px] text-[#444]' htmlFor="email" >Email</label>
                         <input className='px-6 py-5 rounded-lg' type="email" placeholder='Type here' name="email" />
@@ -41,13 +21,9 @@ const LogIn = () => {
                         <label className='text-[20px] text-[#444]' htmlFor="password">Password</label>
                         <input className='px-6 py-5 rounded-lg' type="password" placeholder='Enter your password' name="password" />
 
-
-                        <LoadCanvasTemplate />
-                        <input onBlur={handleValidate} className='px-6 py-5 rounded-lg' type="text" placeholder='Type Captcha Here' />
-
-                        <input disabled={disabled} className='px-6 py-5 rounded-lg bg-[#dbb984] text-white font-bold text-xl' type="submit" value="Sign In" />
+                        <input className='px-6 py-5 rounded-lg bg-[#dbb984] text-white font-bold text-xl' type="submit" value="Sign Up" />
                     </form>
-                    <p className='text-[#D1A054] text-xl text-center my-5'>New here? <Link to="/register"><span className='font-bold'>Create a New Account</span></Link></p>
+                    <p className='text-[#D1A054] text-xl text-center my-5'>Already registered? <Link to="/login"><span className='font-bold'> Go to log in</span></Link></p>
                     <p className='text-xl font-medium text-center'>Or sign in with</p>
                     <div className='flex items-center justify-evenly
                     mt-6'>
@@ -69,4 +45,4 @@ const LogIn = () => {
     );
 };
 
-export default LogIn;
+export default Register;
