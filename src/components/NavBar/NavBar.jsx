@@ -37,6 +37,9 @@ const NavBar = () => {
                     <li>
                         <Link to="/order/desserts">ORDER</Link>
                     </li>
+                    <li>
+                        <Link to="/login">LogIn</Link>
+                    </li>
                 </ul>
             </div>
             <div className="navbar-end">
