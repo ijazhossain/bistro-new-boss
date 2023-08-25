@@ -1,11 +1,13 @@
 import bgImg from '../../assets/reservation/wood-grain-pattern-gray1x.png'
 import img from '../../assets/others/authentication2.png'
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { FaFacebookF, FaGithub, FaGoogle } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Providers/AuthProvider';
 
 const LogIn = () => {
+    const { logIn } = useContext(AuthContext);
     const [disabled, setDisabled] = useState(true)
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -13,6 +15,13 @@ const LogIn = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password);
+        logIn(email, password)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+            }).catch(error => {
+                console.log(error.message);
+            })
     }
     const handleValidate = (e) => {
         const user_captcha_value = e.target.value;

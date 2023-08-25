@@ -1,6 +1,17 @@
 import { Link } from "react-router-dom";
 import './NavBar.css'
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProvider";
 const NavBar = () => {
+    const { user, logOut } = useContext(AuthContext);
+    const handleSignOut = () => {
+        logOut()
+            .then(() => {
+
+            }).catch(error => {
+                console.log(error.message);
+            })
+    }
     return (
         <div className="navbar bg-opacity-40 fixed z-10 bg-black text-white  max-w-[2590px] mx-auto px-8">
             <div className="navbar-start">
@@ -25,8 +36,8 @@ const NavBar = () => {
                     <p className="tracking-[9.12px]">Restaurant</p>
                 </Link>
             </div>
-            <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
+            <div className="navbar-end hidden lg:flex ">
+                <ul className="menu menu-horizontal px-1  lg:flex items-center">
                     <li>
                         <Link to="/">HOME</Link>
                     </li>
@@ -37,14 +48,22 @@ const NavBar = () => {
                     <li>
                         <Link to="/order/desserts">ORDER</Link>
                     </li>
-                    <li>
-                        <Link to="/login">LogIn</Link>
-                    </li>
+
+                    {
+                        user ?
+                            <>
+                                <button onClick={handleSignOut} className="btn">SIGNOUT</button>
+                            </>
+                            :
+                            <>
+                                <li>
+                                    <Link to="/login">LOGIN</Link>
+                                </li>
+                            </>
+                    }
                 </ul>
             </div>
-            <div className="navbar-end">
-                <a className="btn">Button</a>
-            </div>
+
         </div>
 
     );
