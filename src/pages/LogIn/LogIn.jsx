@@ -3,12 +3,14 @@ import img from '../../assets/others/authentication2.png'
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { useContext, useEffect, useState } from 'react';
 import { FaFacebookF, FaGithub, FaGoogle } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 const LogIn = () => {
+    const navigate = useNavigate()
     const { logIn } = useContext(AuthContext);
-    const [disabled, setDisabled] = useState(true)
+    const [isDisabled, setIsDisabled] = useState(true)
     const handleSubmit = (e) => {
         e.preventDefault()
         const form = e.target;
@@ -19,6 +21,14 @@ const LogIn = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Login Successful',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                navigate('/')
             }).catch(error => {
                 console.log(error.message);
             })
@@ -26,10 +36,11 @@ const LogIn = () => {
     const handleValidate = (e) => {
         const user_captcha_value = e.target.value;
         console.log(user_captcha_value);
-        if (validateCaptcha(validateCaptcha) === true) {
-            setDisabled(true)
+        if (validateCaptcha(user_captcha_value)) {
+            setIsDisabled(false)
+            console.log(isDisabled);
         } else {
-            setDisabled(false)
+            setIsDisabled(true)
         }
     }
     useEffect(() => {
@@ -54,7 +65,8 @@ const LogIn = () => {
                         <LoadCanvasTemplate />
                         <input onBlur={handleValidate} className='px-6 py-5 rounded-lg' type="text" placeholder='Type Captcha Here' />
 
-                        <input disabled={disabled} className='px-6 py-5 rounded-lg bg-[#dbb984] text-white font-bold text-xl' type="submit" value="Sign In" />
+                        <input className=' btn bg-[#dbb984] hover:bg-[#dbb984] rounded-lg bg- text-white font-bold text-xl' type="submit" value="Sign In" disabled={isDisabled} />
+
                     </form>
                     <p className='text-[#D1A054] text-xl text-center my-5'>New here? <Link to="/register"><span className='font-bold'>Create a New Account</span></Link></p>
                     <p className='text-xl font-medium text-center'>Or sign in with</p>
