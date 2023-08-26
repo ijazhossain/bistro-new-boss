@@ -48,10 +48,14 @@ const NavBar = () => {
                     <li>
                         <Link to="/order/desserts">ORDER</Link>
                     </li>
+                    <li>
+                        <Link to="/secret">SECRET</Link>
+                    </li>
 
                     {
                         user ?
                             <>
+                                <span>{user.displayName}</span>
                                 <button onClick={handleSignOut} className="btn">SIGNOUT</button>
                             </>
                             :

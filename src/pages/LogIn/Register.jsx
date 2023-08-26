@@ -1,12 +1,14 @@
 import bgImg from '../../assets/reservation/wood-grain-pattern-gray1x.png'
 import img from '../../assets/others/authentication2.png'
 import { FaFacebookF, FaGithub, FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { useContext } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
+import Swal from 'sweetalert2';
 const Register = () => {
-    const { createUser } = useContext(AuthContext)
+    const navigate = useNavigate();
+    const { createUser, updateUserProfile } = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
         console.log(data);
@@ -14,6 +16,21 @@ const Register = () => {
             .then(result => {
                 const newUser = result.user;
                 console.log(newUser);
+                updateUserProfile(data.name, data.photoURL)
+                    .then(() => {
+                        console.log('user profile updated');
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'User created successfully',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        navigate('/')
+                    }).catch(error => {
+                        console.log(error);
+                    })
+
             }).catch(error => {
                 console.log(error.message);
             })
@@ -27,9 +44,14 @@ const Register = () => {
                     <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-5 w-full'>
                         <h2 className='text-[48px] text-center font-bold'>Sign Up</h2>
 
-                        <label className='text-[20px] text-[#444]' htmlFor="email" >Name</label>
+                        <label className='text-[20px] text-[#444]' htmlFor="name" >Name</label>
                         <input {...register("name", { required: true })} className='px-6 py-5 rounded-lg' type="text" placeholder='Type here' name="name" />
                         {errors.name && <span className='text-red-600'>Name is required</span>}
+
+                        <label className='text-[20px] text-[#444]' htmlFor="photoURL" >PhotoURL</label>
+                        <input type="text"  {...register("photoURL", { required: true })} placeholder="Photo URL" className="input input-bordered" />
+                        {errors.photoURL && <span className="text-red-600">Photo URL is required</span>}
+
 
                         <label className='text-[20px] text-[#444]' htmlFor="email" >Email</label>
                         <input {...register("email", { required: true })} className='px-6 py-5 rounded-lg' type="email" placeholder='Type here' name="email" />
