@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import './NavBar.css'
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
+import { FaShoppingCart } from "react-icons/fa";
+import frameImg from '../../assets/icon/frame.png';
 const NavBar = () => {
     const { user, logOut } = useContext(AuthContext);
     const handleSignOut = () => {
@@ -37,32 +39,39 @@ const NavBar = () => {
                 </Link>
             </div>
             <div className="navbar-end hidden lg:flex ">
-                <ul className="menu menu-horizontal px-1  lg:flex items-center">
-                    <li>
-                        <Link to="/">HOME</Link>
-                    </li>
+                <ul className="menu menu-horizontal px-1  lg:flex items-center w-full">
+                    <p>
+                        <Link className="focus:text-[#EEFF25] text-xl font-extrabold me-5" to="/">HOME</Link>
+                    </p>
 
-                    <li>
-                        <Link to="/menu">OUR MENU</Link>
-                    </li>
-                    <li>
-                        <Link to="/order/desserts">ORDER</Link>
-                    </li>
-                    <li>
-                        <Link to="/secret">SECRET</Link>
-                    </li>
+                    <p>
+                        <Link className="focus:text-[#EEFF25] text-xl font-extrabold me-5" to="/menu">OUR MENU</Link>
+                    </p>
+                    <p>
+                        <Link className="focus:text-[#EEFF25] text-xl font-extrabold me-5" to="/order/desserts">ORDER</Link>
+                    </p>
+                    <p>
+                        <Link className="focus:text-[#EEFF25] text-xl font-extrabold me-5" to="/secret">SECRET</Link>
+                    </p>
+                    <div>
+                        <Link className="focus:text-[#EEFF25] text-xl font-extrabold me-5 flex items-center">
+                            <FaShoppingCart></FaShoppingCart>
+                            <div className="badge badge-secondary ml-2">+0</div>
+                        </Link>
+                    </div>
 
                     {
                         user ?
                             <>
-                                <span>{user.displayName}</span>
-                                <button onClick={handleSignOut} className="btn">SIGNOUT</button>
+                                <button className=" me-5 text-xl font-extrabold" onClick={handleSignOut}>SIGNOUT</button>
+                                <img className="w-[50px] h-[50px] rounded-full" src={user?.photoURL} alt="" />
                             </>
                             :
                             <>
-                                <li>
-                                    <Link to="/login">LOGIN</Link>
-                                </li>
+                                <p>
+                                    <Link className=" me-5 text-xl font-extrabold" to="/login">LOGIN</Link>
+                                </p>
+                                <img className="w-[50px] h-[50px] rounded-full" src={frameImg} alt="" />
                             </>
                     }
                 </ul>
