@@ -4,8 +4,10 @@ import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { FaShoppingCart } from "react-icons/fa";
 import frameImg from '../../assets/icon/frame.png';
+import useCart from "../../hooks/useCart";
 const NavBar = () => {
     const { user, logOut } = useContext(AuthContext);
+    const [cart] = useCart()
     const handleSignOut = () => {
         logOut()
             .then(() => {
@@ -56,7 +58,7 @@ const NavBar = () => {
                     <div>
                         <Link className="focus:text-[#EEFF25] text-xl font-extrabold me-5 flex items-center">
                             <FaShoppingCart></FaShoppingCart>
-                            <div className="badge badge-secondary ml-2">+0</div>
+                            <div className="badge badge-secondary ml-2">+{cart.length}</div>
                         </Link>
                     </div>
 
@@ -64,7 +66,8 @@ const NavBar = () => {
                         user ?
                             <>
                                 <button className=" me-5 text-xl font-extrabold" onClick={handleSignOut}>SIGNOUT</button>
-                                <img className="w-[50px] h-[50px] rounded-full" src={user?.photoURL} alt="" />
+                                <span className="cursor-pointer tooltip tooltip-bottom" data-tip={user?.displayName}>
+                                    <img className="w-[50px] h-[50px] rounded-full" src={user?.photoURL} alt="" /></span>
                             </>
                             :
                             <>

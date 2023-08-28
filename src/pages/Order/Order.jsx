@@ -8,8 +8,7 @@ import { useParams } from 'react-router-dom';
 import FoodCart from '../../components/FoodCart/FoodCart';
 const Order = () => {
     const [menu, loading] = useMenu();
-
-    console.log(menu);
+    // console.log(menu);
     const { category } = useParams();
     const categories = ['desserts', 'pizza', 'salads', 'soup', 'drinks'];
     const initialIndex = categories.indexOf(category);
