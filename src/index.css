@@ -11,3 +11,14 @@
 .bs-body-font {
     font-family: 'Cinzel', serif;
 }
+
+.drawer-side a {
+    font-weight: 500;
+
+}
+
+.menu li>*:not(ul):not(.menu-title):not(details).active {
+    color: white;
+    background-color: transparent !important;
+
+}

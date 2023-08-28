@@ -1,4 +1,3 @@
-// eslint-disable-next-line react/prop-types
 const SectionTitle = ({ heading, subHeading }) => {
     return (
         <div className="w-[90%] md:w-4/12 mx-auto text-center mb-12 my-">

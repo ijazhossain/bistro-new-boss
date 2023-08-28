@@ -40,7 +40,7 @@ const NavBar = () => {
                     <p className="tracking-[9.12px]">Restaurant</p>
                 </Link>
             </div>
-            <div className="navbar-end hidden lg:flex ">
+            <div className="navbar-end hidden lg:flex w-full">
                 <ul className="menu menu-horizontal px-1  lg:flex items-center w-full">
                     <p>
                         <Link className="focus:text-[#EEFF25] text-xl font-extrabold me-5" to="/">HOME</Link>
@@ -51,6 +51,9 @@ const NavBar = () => {
                     </p>
                     <p>
                         <Link className="focus:text-[#EEFF25] text-xl font-extrabold me-5" to="/order/desserts">ORDER</Link>
+                    </p>
+                    <p>
+                        <Link className="focus:text-[#EEFF25] text-xl font-extrabold me-5" to="/dashboard/myCart">DASHBOARD</Link>
                     </p>
                     <p>
                         <Link className="focus:text-[#EEFF25] text-xl font-extrabold me-5" to="/secret">SECRET</Link>
