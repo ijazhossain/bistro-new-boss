@@ -1,7 +1,9 @@
-import { FaBook, FaCalendarAlt, FaHamburger, FaHome, FaShoppingBag, FaShoppingCart, FaStreetView, FaWallet } from "react-icons/fa";
+import { FaBars, FaBook, FaCalendarAlt, FaHome, FaShoppingBag, FaShoppingCart, FaStreetView, FaWallet } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
+import useCart from "../hooks/useCart";
 
 const Dashboard = () => {
+    const [cart] = useCart();
     return (
 
         <div className="drawer  lg:drawer-open">
@@ -13,7 +15,7 @@ const Dashboard = () => {
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer" className="drawer-overlay"></label>
-                <ul className="menu p-4 w-80 min-h-full bg-[#D1A054] text-base-content">
+                <ul className="menu p-4 w-80 min-h-full bg-[#D1A054] text-base-content pt-[40px]">
                     {/* Sidebar content here */}
                     <li>
                         <NavLink to='/dashboard/userHome' className="uppercase">
@@ -42,6 +44,8 @@ const Dashboard = () => {
                     <li><NavLink to='/dashboard/myCart' className="uppercase">
                         <FaShoppingCart></FaShoppingCart>
                         My cart
+
+                        <div className="badge badge-secondary ml-2">+{cart.length}</div>
                     </NavLink></li>
                     <li><NavLink to='/dashboard/bookings' className="uppercase">
                         <FaBook></FaBook>
@@ -53,7 +57,7 @@ const Dashboard = () => {
                         Home
                     </NavLink></li>
                     <li><NavLink to='/menu' className="uppercase">
-                        <FaHamburger></FaHamburger>
+                        <FaBars></FaBars>
                         Menu
                     </NavLink></li>
                     <li><NavLink to='/order/desserts' className="uppercase">
