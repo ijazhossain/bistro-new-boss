@@ -12,6 +12,10 @@
     font-family: 'Cinzel', serif;
 }
 
+.menu a.active {
+    color: #EEFF25;
+}
+
 .drawer-side a {
     font-weight: 500;
     font-size: 20px;

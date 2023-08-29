@@ -40,7 +40,7 @@ const MyCart = () => {
     }
     return (
         <div>
-            <SectionTitle heading="WANNA ADD MORE?" subHeading="Cart"></SectionTitle>
+            <SectionTitle heading="WANNA ADD MORE?" subHeading="---My Cart---"></SectionTitle>
             <div className="flex items-center justify-evenly">
                 <h3 className="text-[32px] font-bold">Total orders: {cart.length}</h3>
                 <h3 className="text-[32px] font-bold">Total price:${totalPrice} </h3>
