@@ -1,11 +1,11 @@
 import bgImg from '../../assets/reservation/wood-grain-pattern-gray1x.png'
 import img from '../../assets/others/authentication2.png'
-import { FaFacebookF, FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { useContext } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
 import Swal from 'sweetalert2';
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 const Register = () => {
     const navigate = useNavigate();
     const { createUser, updateUserProfile } = useContext(AuthContext)
@@ -82,20 +82,7 @@ const Register = () => {
                     </form>
                     <p className='text-[#D1A054] text-xl text-center my-5'>Already registered? <Link to="/login"><span className='font-bold'> Go to log in</span></Link></p>
                     <p className='text-xl font-medium text-center'>Or sign in with</p>
-                    <div className='flex items-center justify-evenly
-                    mt-6'>
-                        <div className='w-[52px] h-[52px] rounded-full border-2 border-black flex items-center justify-center'>
-                            <FaFacebookF className='text-2xl' />
-
-
-                        </div>
-                        <div className='w-[52px] h-[52px] rounded-full border-2 border-black flex items-center justify-center'>
-                            <FaGoogle className='text-2xl' />
-                        </div>
-                        <div className='w-[52px] h-[52px] rounded-full border-2 border-black flex items-center justify-center'>
-                            <FaGithub className='text-2xl' />
-                        </div>
-                    </div>
+                    <SocialLogin></SocialLogin>
                 </div>
             </div>
         </div>

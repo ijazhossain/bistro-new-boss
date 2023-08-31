@@ -15,6 +15,7 @@ import Reservation from "../pages/Dashboard/Reservation/Reservation";
 import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
 import Review from "../pages/Dashboard/Review/Review";
 import Bookings from "../pages/Dashboard/Bookings/Bookings";
+import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 export const router = createBrowserRouter([
     {
         path: '/',
@@ -90,6 +91,11 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/bookings',
                 element: <Bookings></Bookings>
+
+            },
+            {
+                path: '/dashboard/users',
+                element: <AllUsers></AllUsers>
 
             }
         ]

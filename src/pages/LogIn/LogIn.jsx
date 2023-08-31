@@ -2,10 +2,10 @@ import bgImg from '../../assets/reservation/wood-grain-pattern-gray1x.png'
 import img from '../../assets/others/authentication2.png'
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { useContext, useEffect, useState } from 'react';
-import { FaFacebookF, FaGithub, FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
 import Swal from 'sweetalert2';
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const LogIn = () => {
     const navigate = useNavigate()
@@ -76,20 +76,7 @@ const LogIn = () => {
                     </form>
                     <p className='text-[#D1A054] text-xl text-center my-5'>New here? <Link to="/register"><span className='font-bold'>Create a New Account</span></Link></p>
                     <p className='text-xl font-medium text-center'>Or sign in with</p>
-                    <div className='flex items-center justify-evenly
-                    mt-6'>
-                        <div className='w-[52px] h-[52px] rounded-full border-2 border-black flex items-center justify-center'>
-                            <FaFacebookF className='text-2xl' />
-
-
-                        </div>
-                        <div className='w-[52px] h-[52px] rounded-full border-2 border-black flex items-center justify-center'>
-                            <FaGoogle className='text-2xl' />
-                        </div>
-                        <div className='w-[52px] h-[52px] rounded-full border-2 border-black flex items-center justify-center'>
-                            <FaGithub className='text-2xl' />
-                        </div>
-                    </div>
+                    <SocialLogin></SocialLogin>
                 </div>
             </div>
         </div>

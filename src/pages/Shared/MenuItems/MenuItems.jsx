@@ -1,8 +1,6 @@
-// eslint-disable-next-line react/prop-types
 const MenuItems = ({ item }) => {
-    // eslint-disable-next-line react/prop-types
     const { name, price, image, recipe } = item
-    console.log(item);
+    // console.log(item);
     return (
         <div className="flex items-start justify-start gap-8">
             <img style={{ borderRadius: '0px 200px 200px 200px' }} className="w-[118px] " src={image} alt="food image" />
