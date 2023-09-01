@@ -71,7 +71,7 @@ const LogIn = () => {
                         <LoadCanvasTemplate />
                         <input onBlur={handleValidate} className='px-6 py-5 rounded-lg' type="text" placeholder='Type Captcha Here' />
 
-                        <input className=' btn bg-[#dbb984] hover:bg-[#dbb984] rounded-lg bg- text-white font-bold text-xl' type="submit" value="Sign In" disabled={isDisabled} />
+                        <input className=' btn bg-[#dbb984] hover:bg-[#dbb984] rounded-lg bg- text-white font-bold text-xl' type="submit" value="Sign In" disabled={false} />
 
                     </form>
                     <p className='text-[#D1A054] text-xl text-center my-5'>New here? <Link to="/register"><span className='font-bold'>Create a New Account</span></Link></p>
