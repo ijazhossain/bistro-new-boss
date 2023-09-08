@@ -6,7 +6,7 @@ const PopularMenu = () => {
     const [menu, loading] = useMenu([])
     const popularMenu = menu.filter(item => item.category === 'popular')
     if (loading) {
-        return <span className="loading loading-spinner loading-lg"></span>
+        return <div className="loading loading-spinner loading-lg flex item-center justify-center mx-auto h-screen"></div>
     }
     /* useEffect(() => {
     

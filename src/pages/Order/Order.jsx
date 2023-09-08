@@ -20,7 +20,7 @@ const Order = () => {
     const soup = menu.filter(item => item.category === 'soup');
     const drinks = menu.filter(item => item.category === 'drinks');
     if (loading) {
-        return <h1> Loading...</h1>
+        return <div className="loading loading-spinner loading-lg flex item-center justify-center mx-auto h-screen"></div>
     }
     return (
         <div>

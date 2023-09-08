@@ -11,12 +11,16 @@ const Dashboard = () => {
 
     return (
 
-        <div className="drawer  lg:drawer-open">
+        <div className="drawer lg:drawer-open">
             <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content">
+            <div className="drawer-content ">
                 {/* Page content here */}
+                <div className="text-end">
+                    <label htmlFor="my-drawer" className="btn btn-primary drawer-button lg:hidden bg-[#D1A054] m-10">
+                        <FaBars></FaBars>
+                    </label>
+                </div>
                 <Outlet></Outlet>
-                <label htmlFor="my-drawer" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer" className="drawer-overlay"></label>
@@ -38,7 +42,7 @@ const Dashboard = () => {
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to='#' className="uppercase">
+                                    <NavLink to='/dashboard/manageItems' className="uppercase">
                                         <FaList></FaList>
                                         Manger items
                                     </NavLink>

@@ -9,12 +9,8 @@ import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const LogIn = () => {
     const navigate = useNavigate()
-
     const location = useLocation();
-
-
     const from = location.state?.from?.pathname || "/";
-
     const { logIn } = useContext(AuthContext);
     const [isDisabled, setIsDisabled] = useState(true)
     const handleSubmit = (e) => {
@@ -63,10 +59,8 @@ const LogIn = () => {
                         <label className='text-[20px] text-[#444]' htmlFor="email" >Email</label>
                         <input className='px-6 py-5 rounded-lg' type="email" placeholder='Type here' name="email" />
 
-
                         <label className='text-[20px] text-[#444]' htmlFor="password">Password</label>
                         <input className='px-6 py-5 rounded-lg' type="password" placeholder='Enter your password' name="password" />
-
 
                         <LoadCanvasTemplate />
                         <input onBlur={handleValidate} className='px-6 py-5 rounded-lg' type="text" placeholder='Type Captcha Here' />

@@ -7,7 +7,7 @@ const AdminRoute = ({ children }) => {
     const [isAdmin, isAdminLoading] = useAdmin();
     const location = useLocation();
     if (loading || isAdminLoading) {
-        return <h1>Loading...</h1>
+        return <div className="loading loading-spinner loading-lg flex item-center justify-center mx-auto h-screen"></div>
     }
     if (user && isAdmin) {
         return children;
